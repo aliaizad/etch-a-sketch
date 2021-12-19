@@ -1,0 +1,4 @@
+Create a 16 by 16 grid comprises of divs;
+Create the container of the grid;
+Make the container flex;
+Create the first div;
