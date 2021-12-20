@@ -1,6 +1,6 @@
 const body = document.querySelector('body');
 const gridCon = document.querySelector('#grid-container');
-gridCon.setAttribute('style', 'display: flex; height:80%; width:80%; justify-content: center');
+gridCon.setAttribute('style', 'display: flex; height:80%; width:50%; justify-content: center; background-color: white');
 //create a function that produces n number of row grid
 function rowGrid (n) {
     for (; n > 0; n--) {
@@ -58,8 +58,9 @@ function changeColour(e) {
 
 //add a button before the first div
 let reset = document.createElement('button');
-reset.textContent = 'Reset';
-body.insertBefore(reset, gridCon);
+reset.textContent = 'Reset Sketchpad';
+reset.setAttribute('style', 'padding: 10px; border-radius: 12px')
+body.appendChild(reset);
 
 reset.addEventListener('click', resetAndAsk);
 
@@ -67,10 +68,11 @@ function resetAndAsk () {
     gridArray.forEach(div => div.style.backgroundColor = '');
     let gridLength = +prompt('How many boxes do you want in a row (max 100)?');
     if (!gridLength) {
-        alert("Check your input!");
-        location.reload();
+        alert("Please enter a number!")
+        gridArray = createGrid(10);
+    } else {
+        gridArray = createGrid(gridLength);
     }
-    gridArray = createGrid(gridLength);
     gridArray.forEach(square => square.addEventListener('mouseover', changeColour));
 }
 //setting up an event listener for the divs to change when it is hovered
